@@ -4,6 +4,11 @@ import { ITransactionRepository } from '../../domain/transaction/repository/tran
 import { AppError } from '../../shared/errors/app-error';
 import { StatusCodes } from 'http-status-codes';
 
+type OutputDto = {
+  bitCoinValue: number;
+  moneyValue: number;
+};
+
 @injectable()
 export class SellBitCoinUseCase {
   constructor(
@@ -13,7 +18,7 @@ export class SellBitCoinUseCase {
     private readonly transactionRepository: ITransactionRepository
   ) {}
 
-  async execute(userId: string, value: number): Promise<void> {
+  async execute(userId: string, value: number): Promise<OutputDto> {
     const bitCoinBalance = await this.transactionRepository.getBalance(
       userId,
       'btc'
@@ -41,6 +46,9 @@ export class SellBitCoinUseCase {
       buyQuotation
     );
 
-    // TODO: Enviar email informando valor dos bitcoins
+    return {
+      bitCoinValue: bitCoinToSell,
+      moneyValue: value,
+    };
   }
 }

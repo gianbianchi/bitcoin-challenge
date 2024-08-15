@@ -24,7 +24,5 @@ export class CreateTransactionUseCase {
         id: input.userId,
       },
     });
-
-    // TODO: Enviar email indicando depósito
   }
 }

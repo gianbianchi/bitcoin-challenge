@@ -8,6 +8,8 @@ import {
   REFRESH_TOKEN_EXPIRES_IN,
   REFRESH_TOKEN_SECRET,
 } from '../../shared/constants/constants';
+import { AppError } from '../../shared/errors/app-error';
+import { StatusCodes } from 'http-status-codes';
 
 export type LoginDto = {
   email: string;
@@ -31,11 +33,17 @@ export class LoginUseCase {
     const user = await this.userRepository.findByEmail(input.email);
 
     if (!user) {
-      return false;
+      throw new AppError(
+        'Email or password incorrect',
+        StatusCodes.BAD_REQUEST
+      );
     }
 
     if (!bcrypt.compareSync(input.password, user.password)) {
-      return false;
+      throw new AppError(
+        'Email or password incorrect',
+        StatusCodes.BAD_REQUEST
+      );
     }
 
     const accessToken = jwt.sign(

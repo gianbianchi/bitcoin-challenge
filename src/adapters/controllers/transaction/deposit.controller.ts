@@ -5,6 +5,7 @@ import {
 } from '../../../usecases/transaction/create-transaction.usecase';
 import { Request, Response, NextFunction } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { sendEmail } from '../../../infra/mailer/gateways/send-email.gateway';
 
 const useCase = container.resolve(CreateTransactionUseCase);
 
@@ -15,7 +16,7 @@ export const handleDeposit = async (
 ) => {
   try {
     const { amount } = req.body;
-    const { id } = req.user;
+    const { id, email } = req.user;
 
     if (!amount) {
       return res
@@ -31,6 +32,13 @@ export const handleDeposit = async (
     };
 
     const response = await useCase.execute(input);
+
+    await sendEmail({
+      email,
+      subject: `Deposit`,
+      text: `A deposit of R$ ${amount} was made`,
+    });
+
     res.status(StatusCodes.CREATED).json(response);
   } catch (err) {
     next(err);

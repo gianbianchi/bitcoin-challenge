@@ -4,6 +4,8 @@ import { User } from '../../../domain/user/model/user';
 import { UserEntity } from '../entities/user.entity';
 
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../shared/errors/app-error';
+import { StatusCodes } from 'http-status-codes';
 
 @injectable()
 export class UserTypeOrmRepository implements IUserRepository {

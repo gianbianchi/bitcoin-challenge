@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { LoginUseCase } from '../../../usecases/auth/login.usecase';
 import { StatusCodes } from 'http-status-codes';
+import { sendEmail } from '../../../infra/mailer/gateways/send-email.gateway';
 
 const loginUseCase = container.resolve(LoginUseCase);
 

@@ -8,7 +8,8 @@ import { PORT } from './shared/constants/constants';
 import { RegisterAccountUseCase } from './usecases/user-account/register-account.usecase';
 import { container } from 'tsyringe';
 import { TesetUseCase } from './usecases/user-account/teste.usecase';
-import { LoginUseCase } from './usecases/auth/login.usecase';
+import { handleLogin } from './controllers/auth/login.controller';
+import { verifyJWT } from './shared/middlewares/jwt-verify';
 
 AppDataSource.initialize()
   .then(() => {
@@ -20,7 +21,6 @@ AppDataSource.initialize()
 
 const registerAccountUseCase = container.resolve(RegisterAccountUseCase);
 const testeUseCase = container.resolve(TesetUseCase);
-const loginUseCase = container.resolve(LoginUseCase);
 
 const app = express();
 app.use(express.json());
@@ -31,13 +31,9 @@ app.post('/users', async function (req: Request, res: Response) {
   res.json(users);
 });
 
-app.post('/auth/login', async function (req: Request, res: Response) {
-  const { email, password } = req.body;
-  const response = await loginUseCase.execute({ email, password });
-  res.json(response);
-});
+app.post('/auth/login', handleLogin);
 
-app.get('/users', async function (req: Request, res: Response) {
+app.get('/users', verifyJWT, async function (req: Request, res: Response) {
   const users = await testeUseCase.execute();
   res.json(users);
 });

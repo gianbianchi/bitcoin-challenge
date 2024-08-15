@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import { UseCase } from '../usecase';
 import { IUserRepository } from '../../domain/user/repository/user.repository';
 import * as bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export type LoginDto = {
   email: string;
@@ -15,7 +16,7 @@ export class LoginUseCase implements UseCase<LoginDto, boolean> {
     private readonly userRepository: IUserRepository
   ) {}
 
-  async execute(input: LoginDto): Promise<boolean> {
+  async execute(input: LoginDto): Promise<any> {
     const user = await this.userRepository.findByEmail(input.email);
 
     if (!user) {
@@ -26,6 +27,28 @@ export class LoginUseCase implements UseCase<LoginDto, boolean> {
       return false;
     }
 
-    return true;
+    const accessToken = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      String(process.env.ACCESS_TOKEN_SECRET),
+      { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN }
+    );
+
+    const refreshToken = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      String(process.env.REFRESH_TOKEN_SECRET),
+      { expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN }
+    );
+
+    return {
+      id: user.id,
+      accessToken,
+      refreshToken,
+    };
   }
 }

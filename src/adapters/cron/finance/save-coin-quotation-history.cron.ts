@@ -1,5 +1,4 @@
 import { container } from 'tsyringe';
-import cron from 'node-cron';
 import { SaveCoinQuotationHistoryUseCase } from '../../../usecases/finance/save-coin-quotation-history.usecase';
 
 const useCase = container.resolve(SaveCoinQuotationHistoryUseCase);

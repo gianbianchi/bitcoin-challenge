@@ -1,4 +1,4 @@
-import { Repository } from 'typeorm';
+import { Between, LessThanOrEqual, Repository } from 'typeorm';
 import { IQuotationHistoryRepository } from '../../../domain/quotation-history/repository/quotation-history.repository';
 import { QuotationHistoryEntity } from '../entities/quotation-history.entity';
 import { inject, injectable } from 'tsyringe';
@@ -18,11 +18,23 @@ export class QuotationHistoryTypeOrmRepository
     await this.repository.save(newData);
   }
 
-  async findAll(): Promise<QuotationHistory[]> {
-    throw new Error('Method not implemented.');
+  async findAllBetweenDates(
+    initialDate: Date,
+    finalDate: Date
+  ): Promise<QuotationHistory[]> {
+    return await this.repository.find({
+      where: {
+        createdAt: Between(initialDate, finalDate),
+      },
+      order: {
+        createdAt: 'DESC',
+      },
+    });
   }
 
   async purgeDataBeforeDate(date: Date): Promise<void> {
-    throw new Error('Method not implemented.');
+    await this.repository.delete({
+      createdAt: LessThanOrEqual(date),
+    });
   }
 }

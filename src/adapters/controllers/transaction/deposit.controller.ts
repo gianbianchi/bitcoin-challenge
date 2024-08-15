@@ -2,7 +2,7 @@ import { container } from 'tsyringe';
 import {
   CreateTransactionDto,
   CreateTransactionUseCase,
-} from '../../../usecases/finance/create-transaction.usecase';
+} from '../../../usecases/transaction/create-transaction.usecase';
 import { Request, Response, NextFunction } from 'express';
 
 const useCase = container.resolve(CreateTransactionUseCase);

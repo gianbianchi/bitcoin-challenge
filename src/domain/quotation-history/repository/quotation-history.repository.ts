@@ -2,5 +2,9 @@ import { QuotationHistory } from '../model/quotation-history';
 
 export interface IQuotationHistoryRepository {
   create(body: QuotationHistory): Promise<void>;
-  findAll(): Promise<QuotationHistory[]>;
+  findAllBetweenDates(
+    initialDate: Date,
+    finalDate: Date
+  ): Promise<QuotationHistory[]>;
+  purgeDataBeforeDate(date: Date): Promise<void>;
 }

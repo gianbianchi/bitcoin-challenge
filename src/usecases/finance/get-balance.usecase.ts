@@ -14,7 +14,7 @@ export class GetUserBalanceUseCase implements UseCase<string, OutputDto> {
   ) {}
 
   async execute(userId: string): Promise<OutputDto> {
-    const balance = await this.transactionRepository.getBalance(userId);
+    const balance = await this.transactionRepository.getBalance(userId, 'brl');
     return { balance: balance?.total ?? 0 };
   }
 }

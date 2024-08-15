@@ -9,6 +9,14 @@ export class TransactionEntity extends AbstractEntity<TransactionEntity> {
   @Column('decimal', { name: 'amount', precision: 27, scale: 18 })
   amount: number;
 
+  @Column('decimal', {
+    name: 'quotation',
+    precision: 27,
+    scale: 18,
+    default: 1,
+  })
+  quotation: number;
+
   @Column({ name: 'code', type: 'simple-enum', enum: CoinEnum })
   code: CoinEnum;
 

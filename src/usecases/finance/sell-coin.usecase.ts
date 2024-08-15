@@ -5,7 +5,7 @@ import { AppError } from '../../shared/errors/app-error';
 import { StatusCodes } from 'http-status-codes';
 
 @injectable()
-export class BuyBitCoinUseCase {
+export class SellBitCoinUseCase {
   constructor(
     @inject('IQuotationGateway')
     private readonly quotationRequestGateway: IQuotationGateway,
@@ -14,28 +14,31 @@ export class BuyBitCoinUseCase {
   ) {}
 
   async execute(userId: string, value: number): Promise<void> {
-    const balance = await this.transactionRepository.getBalance(userId, 'brl');
+    const bitCoinBalance = await this.transactionRepository.getBalance(
+      userId,
+      'btc'
+    );
 
-    if (!balance?.total) {
+    if (!bitCoinBalance?.total) {
       throw new AppError(
         'Não foi possível recuperar o saldo',
         StatusCodes.BAD_REQUEST
       );
     }
 
-    if (value > balance?.total) {
+    const { buyQuotation } = await this.quotationRequestGateway.getQuotation();
+
+    const bitCoinToSell = value / buyQuotation;
+
+    if (bitCoinToSell > bitCoinBalance?.total) {
       throw new AppError('Saldo insuficiente', StatusCodes.BAD_REQUEST);
     }
 
-    const { sellQuotation } = await this.quotationRequestGateway.getQuotation();
-
-    const bitCoinToBuy = value / sellQuotation;
-
-    await this.transactionRepository.buyCoin(
+    await this.transactionRepository.sellCoin(
       { id: userId },
       value,
-      bitCoinToBuy,
-      sellQuotation
+      bitCoinToSell,
+      buyQuotation
     );
 
     // TODO: Enviar email informando valor dos bitcoins

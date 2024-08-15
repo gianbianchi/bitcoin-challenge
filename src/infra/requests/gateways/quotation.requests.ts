@@ -4,6 +4,7 @@ import { Quotation } from '../../../domain/quotation/model/quotation';
 import axios from 'axios';
 import { AppError } from '../../../shared/errors/app-error';
 import { StatusCodes } from 'http-status-codes';
+import { API_QUOTATION } from '../../../shared/constants/constants';
 
 type QuotationResponse = {
   high: string;
@@ -22,7 +23,7 @@ export class QuotationBitCoinMarketRequests implements IQuotationGateway {
   async getQuotation(): Promise<Quotation> {
     const data: QuotationResponse = await axios({
       method: 'get',
-      url: 'https://www.mercadobitcoin.net/api/BTC/ticker/',
+      url: API_QUOTATION,
       responseType: 'json',
     })
       .then(function (response) {

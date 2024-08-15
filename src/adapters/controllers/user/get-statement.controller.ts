@@ -26,7 +26,7 @@ export const handleGetUserStatement = async (
     }
 
     const response = await useCase.execute(id, initialDate, finalDate);
-    res.status(200).json(response);
+    res.status(StatusCodes.OK).json(response);
   } catch (err) {
     next(err);
   }

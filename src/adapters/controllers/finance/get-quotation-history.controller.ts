@@ -1,6 +1,7 @@
 import { container } from 'tsyringe';
 import { Request, Response, NextFunction } from 'express';
 import { GetQuotationHistoryUseCase } from '../../../usecases/finance/get-quotation-history.usecase';
+import { StatusCodes } from 'http-status-codes';
 
 const useCase = container.resolve(GetQuotationHistoryUseCase);
 
@@ -11,7 +12,7 @@ export const handleGetQuotationHistory = async (
 ) => {
   try {
     const response = await useCase.execute();
-    res.status(200).json(response);
+    res.status(StatusCodes.OK).json(response);
   } catch (err) {
     next(err);
   }

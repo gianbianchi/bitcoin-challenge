@@ -1,6 +1,7 @@
 import { container } from 'tsyringe';
 import { Request, Response, NextFunction } from 'express';
 import { SellBitCoinUseCase } from '../../../usecases/finance/sell-coin.usecase';
+import { StatusCodes } from 'http-status-codes';
 
 const useCase = container.resolve(SellBitCoinUseCase);
 
@@ -14,7 +15,7 @@ export const handleSellBitCoin = async (
 
   try {
     const response = await useCase.execute(id, amount);
-    res.status(200).json(response);
+    res.status(StatusCodes.NO_CONTENT).json(response);
   } catch (err) {
     next(err);
   }

@@ -5,7 +5,7 @@ import * as yup from 'yup';
 
 export function catchErrors(
   erro: Errback,
-  req: Request,
+  _: Request,
   res: Response,
   next: NextFunction
 ) {

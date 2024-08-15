@@ -4,6 +4,7 @@ import {
   CreateTransactionUseCase,
 } from '../../../usecases/transaction/create-transaction.usecase';
 import { Request, Response, NextFunction } from 'express';
+import { StatusCodes } from 'http-status-codes';
 
 const useCase = container.resolve(CreateTransactionUseCase);
 
@@ -17,7 +18,9 @@ export const handleDeposit = async (
     const { id } = req.user;
 
     if (!amount) {
-      return res.status(400).json({ message: 'Amount is required' });
+      return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json({ message: 'Amount is required' });
     }
 
     const input: CreateTransactionDto = {
@@ -28,7 +31,7 @@ export const handleDeposit = async (
     };
 
     const response = await useCase.execute(input);
-    res.status(201).json(response);
+    res.status(StatusCodes.CREATED).json(response);
   } catch (err) {
     next(err);
   }

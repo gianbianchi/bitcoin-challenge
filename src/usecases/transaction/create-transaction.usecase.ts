@@ -15,8 +15,8 @@ export class CreateTransactionUseCase {
     private readonly transactionRepository: ITransactionRepository
   ) {}
 
-  async execute(input: CreateTransactionDto): Promise<any> {
-    return await this.transactionRepository.create({
+  async execute(input: CreateTransactionDto): Promise<void> {
+    await this.transactionRepository.create({
       amount: input.amount,
       code: input.code,
       transactionType: input.transactionType,

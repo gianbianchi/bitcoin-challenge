@@ -2,7 +2,10 @@ import { inject, injectable } from 'tsyringe';
 import { ITransactionRepository } from '../../../domain/transaction/repository/transaction.repository';
 import { TransactionEntity } from '../entities/transaction.entity';
 import { Between, MoreThanOrEqual, Repository } from 'typeorm';
-import { Transaction } from '../../../domain/transaction/model/transaction';
+import {
+  Transaction,
+  User,
+} from '../../../domain/transaction/model/transaction';
 import { CoinEnum } from '../enum/coin.enum';
 import { TransactionTypeEnum } from '../enum/transaction-type.enum';
 import { StatementItem } from '../../../domain/statement/model/statement-item';
@@ -42,7 +45,7 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
   }
 
   async buyCoin(
-    user: any,
+    user: User,
     moneyAmount: number,
     coinAmount: number,
     quotation: number
@@ -71,7 +74,7 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
   }
 
   async sellCoin(
-    user: any,
+    user: User,
     moneyAmount: number,
     coinAmount: number,
     quotation: number

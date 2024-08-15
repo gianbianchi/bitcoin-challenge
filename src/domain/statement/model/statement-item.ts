@@ -5,6 +5,10 @@ export class StatementItem {
   value?: number;
   code: string;
   transactionType: string;
-  user: any;
+  user: User;
   created_at: Date;
+}
+
+class User {
+  id: string;
 }

@@ -14,6 +14,12 @@ export type LoginDto = {
   password: string;
 };
 
+type AuthenticationDto = {
+  id: string | undefined;
+  accessToken: string;
+  refreshToken: string;
+};
+
 @injectable()
 export class LoginUseCase {
   constructor(
@@ -21,7 +27,7 @@ export class LoginUseCase {
     private readonly userRepository: IUserRepository
   ) {}
 
-  async execute(input: LoginDto): Promise<any> {
+  async execute(input: LoginDto): Promise<AuthenticationDto | boolean> {
     const user = await this.userRepository.findByEmail(input.email);
 
     if (!user) {

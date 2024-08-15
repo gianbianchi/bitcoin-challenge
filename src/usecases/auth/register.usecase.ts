@@ -17,7 +17,7 @@ export class RegisterUseCase {
     private readonly userRepository: IUserRepository
   ) {}
 
-  async execute(input: CreateUserDto): Promise<any> {
+  async execute(input: CreateUserDto): Promise<void> {
     const checkIfUserExistsByEmail = await this.userRepository.findByEmail(
       input.email
     );
@@ -27,6 +27,6 @@ export class RegisterUseCase {
     }
 
     const user = new User(input);
-    return await this.userRepository.create(user);
+    await this.userRepository.create(user);
   }
 }

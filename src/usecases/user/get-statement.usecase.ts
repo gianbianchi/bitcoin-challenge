@@ -22,7 +22,7 @@ export class GetUserStatementUseCase {
     userId: string,
     initialDate: Date | null,
     finalDate: Date | null
-  ): Promise<any[]> {
+  ): Promise<OutputDto[]> {
     if (!initialDate) {
       initialDate = subDays(new Date(), 90);
     }

@@ -50,8 +50,4 @@ export class UserTypeOrmRepository implements IUserRepository {
       password: output.password,
     };
   }
-
-  async findAll() {
-    return await this.repository.find();
-  }
 }

@@ -6,6 +6,6 @@ export class Transaction {
   user: User;
 }
 
-class User {
+export class User {
   id: string;
 }

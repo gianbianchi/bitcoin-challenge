@@ -1,5 +1,5 @@
 import { StatementItem } from '../../statement/model/statement-item';
-import { Transaction } from '../model/transaction';
+import { Transaction, User } from '../model/transaction';
 
 export interface ITransactionRepository {
   create(user: Transaction): Promise<void>;
@@ -8,13 +8,13 @@ export interface ITransactionRepository {
     coin: string
   ): Promise<{ total: number } | undefined>;
   buyCoin(
-    user: any,
+    user: User,
     moneyAmount: number,
     coinAmount: number,
     quotation: number
   ): Promise<void>;
   sellCoin(
-    user: any,
+    user: User,
     moneyAmount: number,
     coinAmount: number,
     quotation: number

@@ -1,10 +1,14 @@
 import 'dotenv/config';
+import 'reflect-metadata';
+import './shared/container';
 import express from 'express';
 import { Request, Response } from 'express';
 import { AppDataSource } from './infra/typeorm/data-source';
-import { UserTypeOrmRepository } from './infra/typeorm/repositories/user.typeorm.repository';
-import { UserEntity } from './infra/typeorm/entities/user.entity';
 import { PORT } from './shared/constants/constants';
+import { RegisterAccountUseCase } from './usecases/user-account/register-account.usecase';
+import { container } from 'tsyringe';
+import { TesetUseCase } from './usecases/user-account/teste.usecase';
+import { LoginUseCase } from './usecases/auth/login.usecase';
 
 AppDataSource.initialize()
   .then(() => {
@@ -14,31 +18,30 @@ AppDataSource.initialize()
     console.error('Error during Data Source initialization', err);
   });
 
-const repo = UserTypeOrmRepository.create(
-  AppDataSource.getRepository(UserEntity)
-);
+const registerAccountUseCase = container.resolve(RegisterAccountUseCase);
+const testeUseCase = container.resolve(TesetUseCase);
+const loginUseCase = container.resolve(LoginUseCase);
 
 const app = express();
 app.use(express.json());
 
-// // register routes
-app.get('/users/:id', async function (req: Request, res: Response) {
-  const { id } = req.params;
-  const users = await repo.findById(String(id));
+app.post('/users', async function (req: Request, res: Response) {
+  const { name, email, password } = req.body;
+  const users = await registerAccountUseCase.execute({ name, email, password });
   res.json(users);
+});
+
+app.post('/auth/login', async function (req: Request, res: Response) {
+  const { email, password } = req.body;
+  const response = await loginUseCase.execute({ email, password });
+  res.json(response);
 });
 
 app.get('/users', async function (req: Request, res: Response) {
-  const users = await repo.findAll();
+  const users = await testeUseCase.execute();
   res.json(users);
 });
 
-app.post('/users', async function (req: Request, res: Response) {
-  const results = await repo.save();
-  return res.send(results);
-});
-
-// // start express server
 app.listen(PORT, () => {
   console.log(`Application listening on port ${PORT}`);
 });

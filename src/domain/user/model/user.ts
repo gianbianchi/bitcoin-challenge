@@ -1,29 +1,28 @@
-type UserProps = {
-  id: string;
-  name: string;
-  email: string;
-  password: string | null;
-};
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsString,
+  IsStrongPassword,
+} from 'class-validator';
+import * as bcrypt from 'bcrypt';
 
 export class User {
-  private constructor(private props: UserProps) {
-    this.validate();
-  }
+  id?: string;
 
-  public static create(name: string, email: string, password: string) {
-    return new User({
-      id: '1',
-      name,
-      email,
-      password,
-    });
-  }
+  @IsString()
+  @IsNotEmpty()
+  name: string;
 
-  public static with(props: UserProps) {
-    return new User(props);
-  }
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
 
-  private validate() {
-    // TODO: Validação de senha
+  @IsStrongPassword()
+  password: string;
+
+  constructor({ name, email, password }: User) {
+    this.name = name;
+    this.email = email;
+    this.password = bcrypt.hashSync(password, 10);
   }
 }

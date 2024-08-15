@@ -1,9 +1,23 @@
+import { inject, injectable } from 'tsyringe';
 import { UseCase } from '../usecase';
+import { IUserRepository } from '../../domain/user/repository/user.repository';
+import { User } from '../../domain/user/model/user';
 
-export class RegisterAccountUseCase implements UseCase<any, any> {
-  execute(input: any): Promise<any> {
-    // Recebe dados de entrada -> Email, Nome e Senha
+export type CreateUserDto = {
+  name: string;
+  email: string;
+  password: string;
+};
 
-    throw new Error('Method not implemented.');
+@injectable()
+export class RegisterAccountUseCase implements UseCase<CreateUserDto, any> {
+  constructor(
+    @inject('IUserRepository')
+    private readonly userRepository: IUserRepository
+  ) {}
+
+  async execute(input: CreateUserDto): Promise<any> {
+    const user = new User(input);
+    return await this.userRepository.create(user);
   }
 }

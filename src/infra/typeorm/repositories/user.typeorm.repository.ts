@@ -12,12 +12,8 @@ export class UserTypeOrmRepository implements IUserRepository {
     private readonly repository: Repository<UserEntity>
   ) {}
 
-  async insert(user: User): Promise<void> {
-    const newData = this.repository.create({
-      name: 'Teste Usuário',
-      email: 'teste@email.com',
-      password: 'teste',
-    });
+  async create(user: User): Promise<void> {
+    const newData = this.repository.create(user);
     await this.repository.save(newData);
   }
 
@@ -28,12 +24,27 @@ export class UserTypeOrmRepository implements IUserRepository {
       },
     });
 
-    return User.with({
+    return {
       id: output.id,
       name: output.name,
       email: output.email,
       password: output.password,
+    };
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    const output = await this.repository.findOneOrFail({
+      where: {
+        email,
+      },
     });
+
+    return {
+      id: output.id,
+      name: output.name,
+      email: output.email,
+      password: output.password,
+    };
   }
 
   async findAll() {

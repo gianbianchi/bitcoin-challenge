@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import { UseCase } from '../usecase';
 import { ITransactionRepository } from '../../domain/transaction/repository/transaction.repository';
 
-type CreateTransactionDto = {
+export type CreateTransactionDto = {
   amount: number;
   code: 'BRL' | 'BTC';
   transactionType: 'CREDIT' | 'DEBIT';
@@ -27,5 +27,7 @@ export class CreateTransactionUseCase
         id: input.userId,
       },
     });
+
+    // TODO: Enviar email indicando depósito
   }
 }

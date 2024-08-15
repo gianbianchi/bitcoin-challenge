@@ -22,4 +22,43 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
     });
     await this.repository.save(newData);
   }
+
+  async getBalance(userId: string): Promise<{ total: number } | undefined> {
+    return await this.repository
+      .createQueryBuilder('transaction')
+      .select(
+        "SUM(CASE WHEN transaction.transaction_type = 'credit' THEN transaction.amount " +
+          "WHEN transaction.transaction_type = 'debit' THEN -transaction.amount " +
+          'ELSE 0 END)',
+        'total'
+      )
+      .where('transaction.user_id = :userId', { userId })
+      .andWhere('transaction.code = :brl', { brl: 'brl' })
+      .getRawOne<{ total: number } | undefined>();
+  }
+
+  async buyCoin(
+    user: any,
+    moneyAmount: number,
+    coinAmount: number
+  ): Promise<void> {
+    await this.repository.manager.transaction(
+      async (transactionalEntityManager) => {
+        const debitData = this.repository.create({
+          amount: moneyAmount,
+          code: CoinEnum.BRL,
+          transactionType: TransactionTypeEnum.DEBIT,
+          user,
+        });
+        const creditData = this.repository.create({
+          amount: coinAmount,
+          code: CoinEnum.BTC,
+          transactionType: TransactionTypeEnum.CREDIT,
+          user,
+        });
+        await transactionalEntityManager.save(debitData);
+        await transactionalEntityManager.save(creditData);
+      }
+    );
+  }
 }

@@ -7,6 +7,8 @@ import { AppDataSource } from '../../infra/typeorm/data-source';
 import { TransactionEntity } from '../../infra/typeorm/entities/transaction.entity';
 import { ITransactionRepository } from '../../domain/transaction/repository/transaction.repository';
 import { TransactionTypeOrmRepository } from '../../infra/typeorm/repositories/transaction.typeorm.repository';
+import { IQuotationGateway } from '../../domain/quotation/gateway/quotation.gateway';
+import { QuotationBitCoinMarketRequests } from '../../infra/requests/gateways/quotation.requests';
 
 export const UserRepository = AppDataSource.getRepository(UserEntity);
 container.registerInstance('UserRepository', UserRepository);
@@ -21,4 +23,9 @@ container.registerInstance('TransactionRepository', TransactionRepository);
 container.registerSingleton<ITransactionRepository>(
   'ITransactionRepository',
   TransactionTypeOrmRepository
+);
+
+container.registerSingleton<IQuotationGateway>(
+  'IQuotationGateway',
+  QuotationBitCoinMarketRequests
 );

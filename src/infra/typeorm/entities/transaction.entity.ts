@@ -6,7 +6,7 @@ import { UserEntity } from './user.entity';
 
 @Entity({ name: 'tb_transaction' })
 export class TransactionEntity extends AbstractEntity<TransactionEntity> {
-  @Column({ name: 'amount' })
+  @Column('decimal', { name: 'amount', precision: 27, scale: 18 })
   amount: number;
 
   @Column({ name: 'code', type: 'simple-enum', enum: CoinEnum })

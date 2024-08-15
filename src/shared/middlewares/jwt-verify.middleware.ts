@@ -14,18 +14,22 @@ export const verifyJWT = async (
 
   const token = authHeader.split(' ')[1];
 
-  jwt.verify(
-    token,
-    String(process.env.ACCESS_TOKEN_SECRET),
-    (err, decoded: any) => {
-      if (err) {
-        return res.sendStatus(403);
+  try {
+    jwt.verify(
+      token,
+      String(process.env.ACCESS_TOKEN_SECRET),
+      (err, decoded: any) => {
+        if (err) {
+          return res.sendStatus(403);
+        }
+        req.user = {
+          id: decoded.id,
+          email: decoded.email,
+        };
+        next();
       }
-      req.user = {
-        id: decoded.id,
-        email: decoded.email,
-      };
-      next();
-    }
-  );
+    );
+  } catch {
+    return res.sendStatus(401);
+  }
 };

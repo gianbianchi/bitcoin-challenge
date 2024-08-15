@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { container } from 'tsyringe';
-import { GetCoinQuotationUseCase } from '../../usecases/finance/get-coin-quotation.usecase';
+import { GetCoinQuotationUseCase } from '../../../usecases/finance/get-coin-quotation.usecase';
 
 const useCase = container.resolve(GetCoinQuotationUseCase);
 

@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
-import { handleLogin } from '../../controllers/auth/login.controller';
-import { handleRegister } from '../../controllers/auth/register.controller';
+import { handleLogin } from '../../adapters/controllers/auth/login.controller';
+import { handleRegister } from '../../adapters/controllers/auth/register.controller';
 
 const auth = Router();
 

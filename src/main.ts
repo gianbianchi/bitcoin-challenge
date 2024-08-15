@@ -6,6 +6,7 @@ import { AppDataSource } from './infra/typeorm/data-source';
 import { PORT } from './shared/constants/constants';
 import { router } from './routes/index.routes';
 import cors from 'cors';
+import { cronScheduler } from './adapters/cron/cron-scheduler';
 
 AppDataSource.initialize()
   .then(() => {
@@ -26,6 +27,8 @@ app.use(
   })
 );
 app.use(router);
+
+cronScheduler();
 
 app.listen(PORT, () => {
   console.log(`Application listening on port ${PORT}`);

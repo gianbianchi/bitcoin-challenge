@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 import { Request, Response, NextFunction } from 'express';
-import { RegisterAccountUseCase } from '../../usecases/auth/register-account.usecase';
+import { RegisterAccountUseCase } from '../../../usecases/auth/register-account.usecase';
 
 const useCase = container.resolve(RegisterAccountUseCase);
 

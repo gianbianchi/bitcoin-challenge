@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { LoginUseCase } from '../../usecases/auth/login.usecase';
+import { LoginUseCase } from '../../../usecases/auth/login.usecase';
 
 const loginUseCase = container.resolve(LoginUseCase);
 

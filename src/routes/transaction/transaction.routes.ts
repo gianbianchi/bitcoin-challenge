@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { handleDeposit } from '../../controllers/transaction/deposit.controller';
+import { handleDeposit } from '../../adapters/controllers/transaction/deposit.controller';
 
 const transaction = Router();
 

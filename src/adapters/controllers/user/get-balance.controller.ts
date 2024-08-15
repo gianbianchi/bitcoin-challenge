@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import { container } from 'tsyringe';
-import { GetUserCoinBalanceUseCase } from '../../usecases/finance/get-coin-balance.usecase';
+import { GetUserBalanceUseCase } from '../../../usecases/finance/get-balance.usecase';
 
-const useCase = container.resolve(GetUserCoinBalanceUseCase);
+const useCase = container.resolve(GetUserBalanceUseCase);
 
-export const handleGetCoinBalance = async (
+export const handleGetBalance = async (
   req: Request,
   res: Response,
   next: NextFunction

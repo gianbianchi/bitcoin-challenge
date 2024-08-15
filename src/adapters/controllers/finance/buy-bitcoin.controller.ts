@@ -1,10 +1,10 @@
 import { container } from 'tsyringe';
+import { BuyBitCoinUseCase } from '../../../usecases/finance/buy-coin.usecase';
 import { Request, Response, NextFunction } from 'express';
-import { SellBitCoinUseCase } from '../../usecases/finance/sell-coin.usecase';
 
-const useCase = container.resolve(SellBitCoinUseCase);
+const useCase = container.resolve(BuyBitCoinUseCase);
 
-export const handleSellBitCoin = async (
+export const handleBuyBitCoin = async (
   req: Request,
   res: Response,
   next: NextFunction

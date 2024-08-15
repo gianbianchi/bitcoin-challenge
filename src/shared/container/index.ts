@@ -9,6 +9,9 @@ import { ITransactionRepository } from '../../domain/transaction/repository/tran
 import { TransactionTypeOrmRepository } from '../../infra/typeorm/repositories/transaction.typeorm.repository';
 import { IQuotationGateway } from '../../domain/quotation/gateway/quotation.gateway';
 import { QuotationBitCoinMarketRequests } from '../../infra/requests/gateways/quotation.requests';
+import { QuotationHistoryEntity } from '../../infra/typeorm/entities/quotation-history.entity';
+import { IQuotationHistoryRepository } from '../../domain/quotation-history/repository/quotation-history.repository';
+import { QuotationHistoryTypeOrmRepository } from '../../infra/typeorm/repositories/quotation-history.repository';
 
 export const UserRepository = AppDataSource.getRepository(UserEntity);
 container.registerInstance('UserRepository', UserRepository);
@@ -23,6 +26,18 @@ container.registerInstance('TransactionRepository', TransactionRepository);
 container.registerSingleton<ITransactionRepository>(
   'ITransactionRepository',
   TransactionTypeOrmRepository
+);
+
+export const QuotationHistoryRepository = AppDataSource.getRepository(
+  QuotationHistoryEntity
+);
+container.registerInstance(
+  'QuotationHistoryRepository',
+  QuotationHistoryRepository
+);
+container.registerSingleton<IQuotationHistoryRepository>(
+  'IQuotationHistoryRepository',
+  QuotationHistoryTypeOrmRepository
 );
 
 container.registerSingleton<IQuotationGateway>(

@@ -1,0 +1,2018 @@
+{
+  "info": {
+    "_postman_id": "97a26035-f02f-438b-8b09-5ed5e98b091d",
+    "name": "bitcoin challenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18243397"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "Register Account",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Gianluca Bianchi II\",\r\n    \"email\": \"bianchigian102@gmail.com\",\r\n    \"password\": \"Testando123!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "register"]
+            },
+            "description": "Endpoint responsible to registering users in the platform"
+          },
+          "response": [
+            {
+              "name": "201 - Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Gianluca Bianchi II\",\r\n    \"email\": \"bianchigian102@gmail.com\",\r\n    \"password\": \"Testando123!\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/auth/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "register"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:32:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "400 - Fields required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \r\n    \"email\": \"bianchigian10@gmail.com\",\r\n    \"password\": \"Testando123!\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/auth/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "register"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "51"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"33-VUEuHngCi2feTT1u+N1xA6KNI9s\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:31:07 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Name, email and password are required\"\n}"
+            },
+            {
+              "name": "400 - Invalid fields",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Gianluca Bianchi II\",\r\n    \"email\": \"bianchigiangmail.com\",\r\n    \"password\": \"Testando123!\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/auth/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "register"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "27"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"1b-evcYq0xWsuHqdKUOxQRsPiOIt60\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:32:00 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Invalid email\"\n}"
+            },
+            {
+              "name": "409 - Email already registered",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Gianluca Bianchi II\",\r\n    \"email\": \"bianchigian10@gmail.com\",\r\n    \"password\": \"Testando123!\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/auth/register",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "register"]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "105"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"69-3dpAbcNlhZyxdefivsSYdKmU7+4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:31:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Email already registered\",\n    \"statusCode\": 409,\n    \"status\": \"Conflict\",\n    \"time\": \"15/08/2024, 22:31:35\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"gianemail@gmail.com\",\r\n    \"password\": \"Testando132!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "login"]
+            },
+            "description": "Authenticate user in the platform"
+          },
+          "response": [
+            {
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"gianteste@gmail.com\",\r\n    \"password\": \"Testando123!\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/auth/login",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "login"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "544"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"220-wuicW0XlmgP5fL1LeCKuGV0JPnM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:33:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"5c7ef0f0-293c-41fd-b5a6-ff948b5e5238\",\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjN2VmMGYwLTI5M2MtNDFmZC1iNWE2LWZmOTQ4YjVlNTIzOCIsImVtYWlsIjoiYmlhbmNoaWdpYW45OUBnbWFpbC5jb20iLCJpYXQiOjE3MjM3NjEyMTEsImV4cCI6MTcyMzc2MTgxMX0.ppLzVNjqWqMgzShDaliN5vgwIkl-tJGHfvFbSqkryok\",\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjN2VmMGYwLTI5M2MtNDFmZC1iNWE2LWZmOTQ4YjVlNTIzOCIsImVtYWlsIjoiYmlhbmNoaWdpYW45OUBnbWFpbC5jb20iLCJpYXQiOjE3MjM3NjEyMTEsImV4cCI6MTcyMzc2NDgxMX0.bOeUaowwCDQ8SH_4pnvDFTCHR7gMhWQNo6B21XV_R6Q\"\n}"
+            },
+            {
+              "name": "400 - Required fields missing",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"gianteste@gmail.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/auth/login",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "login"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "45"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2d-xu7+uV0l2vKD05IjA0aWEJyDeEc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:33:54 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Email and password are required\"\n}"
+            },
+            {
+              "name": "400 - Incorrect email or password",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"gianemail@gmail.com\",\r\n    \"password\": \"34324\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/auth/login",
+                  "host": ["{{base_url}}"],
+                  "path": ["auth", "login"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "111"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"6f-M9aeWjegqJ/Qizofy5mTijOzEE0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:34:33 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Email or password incorrect\",\n    \"statusCode\": 400,\n    \"status\": \"Bad Request\",\n    \"time\": \"15/08/2024, 22:34:33\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "transaction",
+      "item": [
+        {
+          "name": "Deposit Amount",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 1000\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/transaction/deposit",
+              "host": ["{{base_url}}"],
+              "path": ["transaction", "deposit"]
+            },
+            "description": "Deposit money is users account\n\nSend email to user in case of success"
+          },
+          "response": [
+            {
+              "name": "201 - Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": 1000\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/transaction/deposit",
+                  "host": ["{{base_url}}"],
+                  "path": ["transaction", "deposit"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:37:13 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "400 - Invalid field",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": \"amount\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/transaction/deposit",
+                  "host": ["{{base_url}}"],
+                  "path": ["transaction", "deposit"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "36"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"24-S3h7kpd0H5MLqnp3M5OrSk7EXrg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:37:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Amount must be numeric\"\n}"
+            },
+            {
+              "name": "400 - Invalid amount",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": -100\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/transaction/deposit",
+                  "host": ["{{base_url}}"],
+                  "path": ["transaction", "deposit"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2e-2Rh2PHn1RwZ3LDas7Bf+yEwWppc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:37:49 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Amount must be greater than zero\"\n}"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": 1000\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/transaction/deposit",
+                  "host": ["{{base_url}}"],
+                  "path": ["transaction", "deposit"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:36:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "Get Balance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/balance",
+              "host": ["{{base_url}}"],
+              "path": ["user", "balance"]
+            },
+            "description": "Get user balance"
+          },
+          "response": [
+            {
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/balance",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "balance"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "37"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"25-41YETnzTaOTFnPGrftHOZY5dKZs\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:39:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"balance\": \"4850.000000000000000000\"\n}"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/balance",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "balance"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:39:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        },
+        {
+          "name": "Get Bitcoin Balance",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/balance/btc",
+              "host": ["{{base_url}}"],
+              "path": ["user", "balance", "btc"]
+            },
+            "description": "Get user bitcoin balance"
+          },
+          "response": [
+            {
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/balance/btc",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "balance", "btc"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "34"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"22-ACDAT+Bv14Klzyt5wRgogzYaDeg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:40:21 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"balance\": \"0.003935879113310749\"\n}"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/balance/btc",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "balance", "btc"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:43:58 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        },
+        {
+          "name": "Get Statement",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/statement?initialDate=2024-08-15&finalDate=2024-08-15",
+              "host": ["{{base_url}}"],
+              "path": ["user", "statement"],
+              "query": [
+                {
+                  "key": "initialDate",
+                  "value": "2024-08-15",
+                  "description": "optional"
+                },
+                {
+                  "key": "finalDate",
+                  "value": "2024-08-15",
+                  "description": "optional"
+                }
+              ]
+            },
+            "description": "Get user statement from last 90 days or between params"
+          },
+          "response": [
+            {
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/statement?initialDate=2024-08-15&finalDate=2024-08-15",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "statement"],
+                  "query": [
+                    {
+                      "key": "initialDate",
+                      "value": "2024-08-15"
+                    },
+                    {
+                      "key": "finalDate",
+                      "value": "2024-08-15"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "2319"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"90f-y48ie9RiSe6HgaB4x8xHbYEHiSw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:40:29 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"06b8d853-3674-41d5-8988-04da85f04f3b\",\n        \"createdAt\": \"2024-08-15T22:37:12.793Z\",\n        \"amount\": \"1000.000000000000000000\",\n        \"type\": \"deposit\"\n    },\n    {\n        \"id\": \"af727d7e-f2f6-4c92-855f-a96a639ab7c8\",\n        \"createdAt\": \"2024-08-15T22:23:22.356Z\",\n        \"amount\": \"100.00000\",\n        \"coinAmount\": \"0.000314342024305227\",\n        \"quotation\": \"318124.820316420000000000\",\n        \"type\": \"coin sell\"\n    },\n    {\n        \"id\": \"e5f4de50-c266-4e46-ad4d-8f1254038d2f\",\n        \"createdAt\": \"2024-08-15T22:22:26.564Z\",\n        \"amount\": \"100.00000\",\n        \"coinAmount\": \"0.000314169625018760\",\n        \"quotation\": \"318299.390000000000000000\",\n        \"type\": \"coin purchase\"\n    },\n    {\n        \"id\": \"7e4d939b-c4ec-4f5d-81a3-28db2f49eb58\",\n        \"createdAt\": \"2024-08-15T22:22:07.411Z\",\n        \"amount\": \"500.00000\",\n        \"coinAmount\": \"0.001572287059424194\",\n        \"quotation\": \"318008.087011230000000000\",\n        \"type\": \"coin purchase\"\n    },\n    {\n        \"id\": \"11b49359-7f84-42e4-954e-e4a4d3db26b3\",\n        \"createdAt\": \"2024-08-15T22:22:05.100Z\",\n        \"amount\": \"500.00000\",\n        \"coinAmount\": \"0.001572287059424144\",\n        \"quotation\": \"318008.087011240000000000\",\n        \"type\": \"coin purchase\"\n    },\n    {\n        \"id\": \"9a9f00f2-5ce1-4f17-8d38-604961985d83\",\n        \"createdAt\": \"2024-08-15T22:20:30.556Z\",\n        \"amount\": \"1000.000000000000000000\",\n        \"type\": \"deposit\"\n    },\n    {\n        \"id\": \"fa99dbf5-4bfa-4099-877c-6306df5e65b3\",\n        \"createdAt\": \"2024-08-15T22:19:44.390Z\",\n        \"amount\": \"1000.000000000000000000\",\n        \"type\": \"deposit\"\n    },\n    {\n        \"id\": \"92098c90-14a1-4534-a65d-6dbd6c88a1dc\",\n        \"createdAt\": \"2024-08-15T22:19:42.275Z\",\n        \"amount\": \"1000.000000000000000000\",\n        \"type\": \"deposit\"\n    },\n    {\n        \"id\": \"cb884acd-5f1b-4078-9efe-74e8f8083b72\",\n        \"createdAt\": \"2024-08-15T22:19:05.318Z\",\n        \"amount\": \"-1000.000000000000000000\",\n        \"type\": \"deposit\"\n    },\n    {\n        \"id\": \"d963e44a-7c65-493b-94a7-57fa3c1359e0\",\n        \"createdAt\": \"2024-08-15T22:19:02.022Z\",\n        \"amount\": \"1000.000000000000000000\",\n        \"type\": \"deposit\"\n    },\n    {\n        \"id\": \"6db2384f-e849-4f54-91a6-703ae13b55cc\",\n        \"createdAt\": \"2024-08-15T21:57:37.165Z\",\n        \"amount\": \"100.000000000000000000\",\n        \"type\": \"deposit\"\n    },\n    {\n        \"id\": \"719172e6-2edc-4416-868a-e4b3dea50bc2\",\n        \"createdAt\": \"2024-08-15T21:54:52.012Z\",\n        \"amount\": \"250.00000\",\n        \"coinAmount\": \"0.000789166048622666\",\n        \"quotation\": \"316790.110821830000000000\",\n        \"type\": \"coin sell\"\n    },\n    {\n        \"id\": \"662e9933-7c6c-421b-a52a-b1ccfe2fad8c\",\n        \"createdAt\": \"2024-08-15T21:49:07.475Z\",\n        \"amount\": \"500.00000\",\n        \"coinAmount\": \"0.001580643442371544\",\n        \"quotation\": \"316326.874611150000000000\",\n        \"type\": \"coin purchase\"\n    },\n    {\n        \"id\": \"ea78a595-a079-470d-9661-f4d0abedc510\",\n        \"createdAt\": \"2024-08-15T21:48:50.261Z\",\n        \"amount\": \"2000.000000000000000000\",\n        \"type\": \"deposit\"\n    }\n]"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/statement?initialDate=2024-08-15&finalDate=2024-08-15",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "statement"],
+                  "query": [
+                    {
+                      "key": "initialDate",
+                      "value": "2024-08-15"
+                    },
+                    {
+                      "key": "finalDate",
+                      "value": "2024-08-15"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:44:12 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        },
+        {
+          "name": "Get Volume",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/volume",
+              "host": ["{{base_url}}"],
+              "path": ["user", "volume"]
+            },
+            "description": "Get users' Bitcoin negotiations for today"
+          },
+          "response": [
+            {
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/volume",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "volume"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "89"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"59-gS3UdXroFdznhkIVhhSG35AnmwM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:40:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"totalValueBoughtToday\": 0.005039387186238642,\n    \"totalValueSoldToday\": 0.001103508072927893\n}"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/user/volume",
+                  "host": ["{{base_url}}"],
+                  "path": ["user", "volume"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:44:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "finance",
+      "item": [
+        {
+          "name": "Get BTC Quotation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/finance/btc/quotation",
+              "host": ["{{base_url}}"],
+              "path": ["finance", "btc", "quotation"]
+            },
+            "description": "Get bitcoin current quotation"
+          },
+          "response": [
+            {
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/quotation",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "quotation"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "69"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"45-6M71faJulQjwoBxiItSeFUt5vY8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:41:40 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"bitCoinBuyValue\": 318974.1078801,\n    \"bitCoinSellValue\": 319122.76881521\n}"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/quotation",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "quotation"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:44:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        },
+        {
+          "name": "Get BTC Quotation History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/finance/btc/quotation/history",
+              "host": ["{{base_url}}"],
+              "path": ["finance", "btc", "quotation", "history"]
+            },
+            "description": "Get bitcoin quotation history from last 24 hours"
+          },
+          "response": [
+            {
+              "name": "200 - OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/quotation/history",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "quotation", "history"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1478"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5c6-x6UIB4wyn6Ar8e/kxKRJM4LxWbA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:41:48 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"83f1ed03-e74b-4085-9e52-edb3a063ee7f\",\n        \"createdAt\": \"2024-08-15T22:40:00.777Z\",\n        \"updatedAt\": \"2024-08-15T22:40:00.777Z\",\n        \"buyQuotation\": \"319550.641895970000000000\",\n        \"sellQuotation\": \"319553.770000000000000000\"\n    },\n    {\n        \"id\": \"d204cfdc-f6b2-4b1e-bb31-e631dd9673a1\",\n        \"createdAt\": \"2024-08-15T22:20:00.285Z\",\n        \"updatedAt\": \"2024-08-15T22:20:00.285Z\",\n        \"buyQuotation\": \"317930.012668030000000000\",\n        \"sellQuotation\": \"317938.814606980000000000\"\n    },\n    {\n        \"id\": \"11a71c8f-8661-42da-ace4-b2297204c9bd\",\n        \"createdAt\": \"2024-08-15T22:10:01.252Z\",\n        \"updatedAt\": \"2024-08-15T22:10:01.252Z\",\n        \"buyQuotation\": \"317415.213635350000000000\",\n        \"sellQuotation\": \"317492.989890270000000000\"\n    },\n    {\n        \"id\": \"aee34198-d530-42a9-a29c-32353ea5a81e\",\n        \"createdAt\": \"2024-08-15T22:00:00.428Z\",\n        \"updatedAt\": \"2024-08-15T22:00:00.428Z\",\n        \"buyQuotation\": \"318117.342869670000000000\",\n        \"sellQuotation\": \"318351.989999990000000000\"\n    },\n    {\n        \"id\": \"2a0452e7-674d-4b8a-9163-08325a832b0b\",\n        \"createdAt\": \"2024-08-15T21:50:01.146Z\",\n        \"updatedAt\": \"2024-08-15T21:50:01.146Z\",\n        \"buyQuotation\": \"316010.826828160000000000\",\n        \"sellQuotation\": \"316072.226697750000000000\"\n    },\n    {\n        \"id\": \"eb767da3-04bb-487c-ac15-ab0015005986\",\n        \"createdAt\": \"2024-08-15T20:40:00.572Z\",\n        \"updatedAt\": \"2024-08-15T20:40:00.572Z\",\n        \"buyQuotation\": \"313174.382800130000000000\",\n        \"sellQuotation\": \"313413.179929980000000000\"\n    },\n    {\n        \"id\": \"7a99dd80-25cf-4fd2-92cf-861e31196915\",\n        \"createdAt\": \"2024-08-15T20:38:00.640Z\",\n        \"updatedAt\": \"2024-08-15T20:38:00.640Z\",\n        \"buyQuotation\": \"313286.260000000000000000\",\n        \"sellQuotation\": \"313487.029999900000000000\"\n    }\n]"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/quotation/history",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "quotation", "history"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:44:31 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        },
+        {
+          "name": "Buy Bitcoin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 100\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/finance/btc/buy",
+              "host": ["{{base_url}}"],
+              "path": ["finance", "btc", "buy"]
+            },
+            "description": "Buy bitcoins using the user's balance and send an email if successful."
+          },
+          "response": [
+            {
+              "name": "204 - No content",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": 100\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/buy",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "buy"]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"38-CpfxN89Cp3dz6zuEbRv/OXmuUN8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:41:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "400 - Invalid field",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": \"amount\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/buy",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "buy"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "36"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"24-S3h7kpd0H5MLqnp3M5OrSk7EXrg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:42:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Amount must be numeric\"\n}"
+            },
+            {
+              "name": "400 - Invalid amount",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": -100\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/buy",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "buy"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2e-2Rh2PHn1RwZ3LDas7Bf+yEwWppc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:42:47 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Amount must be greater than zero\"\n}"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": 100\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/buy",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "buy"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:44:37 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        },
+        {
+          "name": "Sell Bitcoin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 100\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/finance/btc/sell",
+              "host": ["{{base_url}}"],
+              "path": ["finance", "btc", "sell"]
+            },
+            "description": "Sell bitcoins from user's bitcoin balance and send an email if successful."
+          },
+          "response": [
+            {
+              "name": "204 - No content",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": 100\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/sell",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "sell"]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"37-yCK3P2kBCrde39rXEdlEYCxGAYA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:42:08 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "400 - Invalid field",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": \"amount\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/sell",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "sell"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "36"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"24-S3h7kpd0H5MLqnp3M5OrSk7EXrg\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:42:35 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Amount must be numeric\"\n}"
+            },
+            {
+              "name": "400 - Invalid amount",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": -100\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/sell",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "sell"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2e-2Rh2PHn1RwZ3LDas7Bf+yEwWppc\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:42:22 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Amount must be greater than zero\"\n}"
+            },
+            {
+              "name": "401 - Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"amount\": 100\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/finance/btc/sell",
+                  "host": ["{{base_url}}"],
+                  "path": ["finance", "btc", "sell"]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "12"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c-dAuDFQrdjS3hezqxDTNgW7AOlYk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 15 Aug 2024 22:44:41 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "Unauthorized"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "exec": [""]
+      }
+    }
+  ]
+}

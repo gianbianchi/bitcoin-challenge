@@ -7,6 +7,8 @@ import { PORT } from './shared/constants/constants';
 import { router } from './routes/index.routes';
 import cors from 'cors';
 import { cronScheduler } from './adapters/cron/cron-scheduler';
+import swaggerUI from 'swagger-ui-express';
+import swaggerDocument from '../swagger.json';
 
 AppDataSource.initialize()
   .then(() => {
@@ -26,6 +28,8 @@ app.use(
     allowedHeaders: '*',
   })
 );
+
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use(router);
 
 cronScheduler();

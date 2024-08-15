@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import { UseCase } from '../usecase';
 import { IQuotationGateway } from '../../domain/quotation/gateway/quotation.gateway';
 
 type OutputDto = {
@@ -8,7 +7,7 @@ type OutputDto = {
 };
 
 @injectable()
-export class GetCoinQuotationUseCase implements UseCase<void, OutputDto> {
+export class GetCoinQuotationUseCase {
   constructor(
     @inject('IQuotationGateway')
     private readonly quotationRequestGateway: IQuotationGateway

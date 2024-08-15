@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import { UseCase } from '../usecase';
 import { ITransactionRepository } from '../../domain/transaction/repository/transaction.repository';
 
 type OutputDto = {
@@ -7,7 +6,7 @@ type OutputDto = {
 };
 
 @injectable()
-export class GetUserBalanceUseCase implements UseCase<string, OutputDto> {
+export class GetUserBalanceUseCase {
   constructor(
     @inject('ITransactionRepository')
     private readonly transactionRepository: ITransactionRepository

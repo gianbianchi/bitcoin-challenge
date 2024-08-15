@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { ITransactionRepository } from '../../../domain/transaction/repository/transaction.repository';
 import { TransactionEntity } from '../entities/transaction.entity';
-import { Between, Repository } from 'typeorm';
+import { Between, MoreThanOrEqual, Repository } from 'typeorm';
 import { Transaction } from '../../../domain/transaction/model/transaction';
 import { CoinEnum } from '../enum/coin.enum';
 import { TransactionTypeEnum } from '../enum/transaction-type.enum';
@@ -153,5 +153,21 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
       .andWhere('tb_transaction.user_id = :userId', { userId })
       .orderBy('tb_transaction.created_at', 'DESC')
       .getRawMany<StatementItem>();
+  }
+
+  async getUserVolumeByDate(
+    userId: string,
+    date: Date,
+    transactionType: TransactionTypeEnum
+  ): Promise<number | null> {
+    return await this.repository.sum('amount', {
+      transactionType,
+      user: {
+        id: userId,
+      },
+      createdAt: MoreThanOrEqual(date),
+      code: CoinEnum.BTC,
+      isNegotiation: true,
+    });
   }
 }

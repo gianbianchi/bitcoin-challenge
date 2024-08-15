@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import { UseCase } from '../usecase';
 import { IUserRepository } from '../../domain/user/repository/user.repository';
 import { User } from '../../domain/user/model/user';
 import { AppError } from '../../shared/errors/app-error';
@@ -12,7 +11,7 @@ export type CreateUserDto = {
 };
 
 @injectable()
-export class RegisterAccountUseCase implements UseCase<CreateUserDto, any> {
+export class RegisterAccountUseCase {
   constructor(
     @inject('IUserRepository')
     private readonly userRepository: IUserRepository

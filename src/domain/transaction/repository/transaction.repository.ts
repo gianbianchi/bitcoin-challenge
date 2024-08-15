@@ -31,4 +31,9 @@ export interface ITransactionRepository {
     initialDate: Date,
     finalDate: Date
   ): Promise<StatementItem[]>;
+  getUserVolumeByDate(
+    userId: string,
+    date: Date,
+    transactionType: string
+  ): Promise<number | null>;
 }

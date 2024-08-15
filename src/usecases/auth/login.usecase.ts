@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import { UseCase } from '../usecase';
 import { IUserRepository } from '../../domain/user/repository/user.repository';
 import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -10,7 +9,7 @@ export type LoginDto = {
 };
 
 @injectable()
-export class LoginUseCase implements UseCase<LoginDto, boolean> {
+export class LoginUseCase {
   constructor(
     @inject('IUserRepository')
     private readonly userRepository: IUserRepository

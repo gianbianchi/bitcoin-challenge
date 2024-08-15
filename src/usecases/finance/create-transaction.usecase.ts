@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import { UseCase } from '../usecase';
 import { ITransactionRepository } from '../../domain/transaction/repository/transaction.repository';
 
 export type CreateTransactionDto = {
@@ -10,9 +9,7 @@ export type CreateTransactionDto = {
 };
 
 @injectable()
-export class CreateTransactionUseCase
-  implements UseCase<CreateTransactionDto, any>
-{
+export class CreateTransactionUseCase {
   constructor(
     @inject('ITransactionRepository')
     private readonly transactionRepository: ITransactionRepository

@@ -1,3 +1,4 @@
+import { StatementItem } from '../../statement/model/statement-item';
 import { Transaction } from '../model/transaction';
 
 export interface ITransactionRepository {
@@ -18,4 +19,11 @@ export interface ITransactionRepository {
     coinAmount: number,
     quotation: number
   ): Promise<void>;
+  getDeposits(initialDate: Date, finalDate: Date): Promise<StatementItem[]>;
+  getNegotiations(
+    code: string,
+    transactionType: string,
+    initialDate: Date,
+    finalDate: Date
+  ): Promise<StatementItem[]>;
 }

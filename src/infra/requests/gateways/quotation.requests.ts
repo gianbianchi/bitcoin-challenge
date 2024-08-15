@@ -1,6 +1,6 @@
 import { injectable } from 'tsyringe';
 import { IQuotationGateway } from '../../../domain/quotation/gateway/quotation.gateway';
-import { Quotation } from '../../../domain/quotation/quotation';
+import { Quotation } from '../../../domain/quotation/model/quotation';
 import axios from 'axios';
 import { AppError } from '../../../shared/errors/app-error';
 import { StatusCodes } from 'http-status-codes';
@@ -29,7 +29,7 @@ export class QuotationBitCoinMarketRequests implements IQuotationGateway {
         const data: QuotationResponse = response.data.ticker;
         return data;
       })
-      .catch(function (err) {
+      .catch(function (_) {
         throw new AppError(
           'It was not possible to recover resource',
           StatusCodes.FAILED_DEPENDENCY

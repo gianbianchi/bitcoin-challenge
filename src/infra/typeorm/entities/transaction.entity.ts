@@ -27,6 +27,12 @@ export class TransactionEntity extends AbstractEntity<TransactionEntity> {
   })
   transactionType: TransactionTypeEnum;
 
+  @Column({
+    name: 'is_negotiation',
+    default: false,
+  })
+  isNegotiation: boolean;
+
   @ManyToOne(() => UserEntity, (user) => user.transactions)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   user: UserEntity;

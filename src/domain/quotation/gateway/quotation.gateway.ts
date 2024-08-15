@@ -1,4 +1,4 @@
-import { Quotation } from '../quotation';
+import { Quotation } from '../model/quotation';
 
 export interface IQuotationGateway {
   getQuotation(): Promise<Quotation>;

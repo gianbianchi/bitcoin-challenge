@@ -1,10 +1,11 @@
 import { inject, injectable } from 'tsyringe';
 import { ITransactionRepository } from '../../../domain/transaction/repository/transaction.repository';
 import { TransactionEntity } from '../entities/transaction.entity';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { Transaction } from '../../../domain/transaction/model/transaction';
 import { CoinEnum } from '../enum/coin.enum';
 import { TransactionTypeEnum } from '../enum/transaction-type.enum';
+import { StatementItem } from '../../../domain/statement/model/statement-item';
 
 @injectable()
 export class TransactionTypeOrmRepository implements ITransactionRepository {
@@ -53,6 +54,7 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
           code: CoinEnum.BRL,
           transactionType: TransactionTypeEnum.DEBIT,
           user,
+          isNegotiation: true,
         });
         const creditData = this.repository.create({
           amount: coinAmount,
@@ -60,6 +62,7 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
           transactionType: TransactionTypeEnum.CREDIT,
           quotation,
           user,
+          isNegotiation: true,
         });
         await transactionalEntityManager.save(debitData);
         await transactionalEntityManager.save(creditData);
@@ -80,6 +83,7 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
           code: CoinEnum.BRL,
           transactionType: TransactionTypeEnum.CREDIT,
           user,
+          isNegotiation: true,
         });
         const debitData = this.repository.create({
           amount: coinAmount,
@@ -87,10 +91,61 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
           transactionType: TransactionTypeEnum.DEBIT,
           quotation,
           user,
+          isNegotiation: true,
         });
         await transactionalEntityManager.save(debitData);
         await transactionalEntityManager.save(creditData);
       }
     );
+  }
+
+  async getDeposits(
+    initialDate: Date,
+    finalDate: Date
+  ): Promise<StatementItem[]> {
+    const transactions = await this.repository.find({
+      where: {
+        code: CoinEnum.BRL,
+        isNegotiation: false,
+        createdAt: Between(initialDate, finalDate),
+      },
+    });
+
+    return transactions.map((t) => {
+      return {
+        id: t.id,
+        amount: t.amount,
+        quotation: t.quotation,
+        code: t.code,
+        transactionType: t.transactionType,
+        user: t.user,
+        createdAt: t.createdAt,
+      };
+    });
+  }
+
+  async getNegotiations(
+    code: string,
+    transactionType: string,
+    initialDate: Date,
+    finalDate: Date
+  ): Promise<StatementItem[]> {
+    return await this.repository
+      .createQueryBuilder('tb_transaction')
+      .select('tb_transaction.*')
+      .addSelect(
+        'ROUND(tb_transaction.amount * tb_transaction.quotation, 5)',
+        'value'
+      )
+      .where(
+        'tb_transaction.code = :code AND tb_transaction.transaction_type = :transactionType',
+        { code, transactionType }
+      )
+      .andWhere(
+        'tb_transaction.created_at BETWEEN :initialDate AND :finalDate',
+        { initialDate, finalDate }
+      )
+      .orderBy('tb_transaction.created_at', 'DESC')
+      .getRawMany<StatementItem>();
   }
 }

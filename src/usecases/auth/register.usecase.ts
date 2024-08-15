@@ -23,7 +23,7 @@ export class RegisterUseCase {
     );
 
     if (checkIfUserExistsByEmail) {
-      throw new AppError('Email já cadastrado', StatusCodes.CONFLICT);
+      throw new AppError('Email already registered', StatusCodes.CONFLICT);
     }
 
     const user = new User(input);

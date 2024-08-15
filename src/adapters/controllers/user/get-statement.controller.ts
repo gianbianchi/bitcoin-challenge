@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import { GetUserStatementUseCase } from '../../../usecases/finance/get-statement.usecase';
+import { GetUserStatementUseCase } from '../../../usecases/user/get-statement.usecase';
 import { Request, Response, NextFunction } from 'express';
 import { isValid } from 'date-fns';
 import { AppError } from '../../../shared/errors/app-error';

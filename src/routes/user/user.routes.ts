@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import { handleGetBalance } from '../../adapters/controllers/user/get-balance.controller';
 import { handleGetUserStatement } from '../../adapters/controllers/user/get-statement.controller';
 import { handleGetCoinBalance } from '../../adapters/controllers/user/get-coin-balance.controller';
-import { handleGetVolume } from '../../adapters/controllers/user/get-user-volume.controller';
+import { handleGetVolume } from '../../adapters/controllers/user/get-volume.controller';
 
 const user = Router();
 

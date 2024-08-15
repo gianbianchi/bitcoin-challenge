@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { container } from 'tsyringe';
-import { GetUserVolumeUseCase } from '../../../usecases/finance/get-volume.usecase';
+import { GetUserVolumeUseCase } from '../../../usecases/user/get-volume.usecase';
 
 const useCase = container.resolve(GetUserVolumeUseCase);
 

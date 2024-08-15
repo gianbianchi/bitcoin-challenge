@@ -11,7 +11,7 @@ export type CreateUserDto = {
 };
 
 @injectable()
-export class RegisterAccountUseCase {
+export class RegisterUseCase {
   constructor(
     @inject('IUserRepository')
     private readonly userRepository: IUserRepository

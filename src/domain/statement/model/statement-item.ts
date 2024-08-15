@@ -6,5 +6,5 @@ export class StatementItem {
   code: string;
   transactionType: string;
   user: any;
-  createdAt: Date;
+  created_at: Date;
 }

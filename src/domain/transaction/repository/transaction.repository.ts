@@ -19,8 +19,13 @@ export interface ITransactionRepository {
     coinAmount: number,
     quotation: number
   ): Promise<void>;
-  getDeposits(initialDate: Date, finalDate: Date): Promise<StatementItem[]>;
+  getDeposits(
+    userId: string,
+    initialDate: Date,
+    finalDate: Date
+  ): Promise<StatementItem[]>;
   getNegotiations(
+    userId: string,
     code: string,
     transactionType: string,
     initialDate: Date,

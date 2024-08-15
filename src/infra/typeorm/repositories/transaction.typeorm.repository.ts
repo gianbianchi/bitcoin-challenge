@@ -100,6 +100,7 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
   }
 
   async getDeposits(
+    userId: string,
     initialDate: Date,
     finalDate: Date
   ): Promise<StatementItem[]> {
@@ -108,6 +109,9 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
         code: CoinEnum.BRL,
         isNegotiation: false,
         createdAt: Between(initialDate, finalDate),
+        user: {
+          id: userId,
+        },
       },
     });
 
@@ -119,12 +123,13 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
         code: t.code,
         transactionType: t.transactionType,
         user: t.user,
-        createdAt: t.createdAt,
+        created_at: t.createdAt,
       };
     });
   }
 
   async getNegotiations(
+    userId: string,
     code: string,
     transactionType: string,
     initialDate: Date,
@@ -145,6 +150,7 @@ export class TransactionTypeOrmRepository implements ITransactionRepository {
         'tb_transaction.created_at BETWEEN :initialDate AND :finalDate',
         { initialDate, finalDate }
       )
+      .andWhere('tb_transaction.user_id = :userId', { userId })
       .orderBy('tb_transaction.created_at', 'DESC')
       .getRawMany<StatementItem>();
   }

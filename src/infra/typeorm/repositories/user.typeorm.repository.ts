@@ -1,16 +1,18 @@
 import { Repository } from 'typeorm';
-import { UserGateway } from '../../../domain/user/gateway/user.gateway';
+import { IUserRepository } from '../../../domain/user/repository/user.repository';
 import { User } from '../../../domain/user/model/user';
 import { UserEntity } from '../entities/user.entity';
 
-export class UserTypeOrmRepository implements UserGateway {
-  constructor(private readonly repository: Repository<UserEntity>) {}
+import { inject, injectable } from 'tsyringe';
 
-  public static create(repository: Repository<UserEntity>) {
-    return new UserTypeOrmRepository(repository);
-  }
+@injectable()
+export class UserTypeOrmRepository implements IUserRepository {
+  constructor(
+    @inject('UserRepository')
+    private readonly repository: Repository<UserEntity>
+  ) {}
 
-  async save(): Promise<void> {
+  async insert(user: User): Promise<void> {
     const newData = this.repository.create({
       name: 'Teste Usuário',
       email: 'teste@email.com',

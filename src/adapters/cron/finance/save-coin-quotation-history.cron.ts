@@ -6,10 +6,10 @@ const useCase = container.resolve(SaveCoinQuotationHistoryUseCase);
 export const handleSaveCoinQuotationHistory = async () => {
   try {
     await useCase.execute();
-    console.log(`[SUCESS]: Quotation saved at ${new Date()}`);
+    console.log(`[SUCESS]: Quotation saved at ${new Date().toLocaleString('pt-BR')}`);
   } catch (err) {
-    console.log(
-      `[ERROR]: It was not possible to save history log at ${new Date()}`
+    console.warn(
+      `[WARN]: It was not possible to save history log at ${new Date().toLocaleString('pt-BR')}`
     );
   }
 };

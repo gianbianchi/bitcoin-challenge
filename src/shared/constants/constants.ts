@@ -6,6 +6,8 @@ export const DB_USERNAME = process.env.DB_USERNAME;
 export const DB_PASSWORD = process.env.DB_PASSWORD;
 export const DB_DATABASE = process.env.DB_DATABASE;
 
+export const MIGRATION_PATH = process.env.MIGRATION_PATH;
+
 export const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 export const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 

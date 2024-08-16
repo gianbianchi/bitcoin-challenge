@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { DataSource } from 'typeorm';
 import {
   DB_DATABASE,
@@ -5,7 +6,11 @@ import {
   DB_PASSWORD,
   DB_PORT,
   DB_USERNAME,
+  MIGRATION_PATH,
 } from '../../shared/constants/constants';
+import { QuotationHistoryEntity } from './entities/quotation-history.entity';
+import { TransactionEntity } from './entities/transaction.entity';
+import { UserEntity } from './entities/user.entity';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -14,8 +19,8 @@ export const AppDataSource = new DataSource({
   username: DB_USERNAME,
   password: DB_PASSWORD,
   database: DB_DATABASE,
-  entities: ['src/infra/typeorm/entities/**.ts'],
+  entities: [QuotationHistoryEntity, TransactionEntity, UserEntity],
   synchronize: false,
-  migrations: ['src/migration/**/*.ts'],
+  migrations: [MIGRATION_PATH || 'src/migration/**/*.ts'],
   migrationsTableName: 'tb_migration',
 });
